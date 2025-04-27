@@ -1,0 +1,31 @@
+---
+import Prose from "../components/Prose.astro";
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  frontmatter: {
+    title: string;
+    date?: Date;
+  };
+}
+
+const { frontmatter } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "2-digit",
+}).format(frontmatter.date);
+---
+
+<BaseLayout title={frontmatter.title}>
+  <div class="max-w-prose">
+    <div class="mb-10">
+      <h1 class="text-4xl font-bold">{frontmatter.title}</h1>
+      <p class="text-sm text-gray-600">{frontmatter.date && formattedDate}</p>
+    </div>
+    <Prose>
+      <slot />
+    </Prose>
+  </div>
+</BaseLayout>

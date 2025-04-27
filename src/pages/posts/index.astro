@@ -1,0 +1,14 @@
+---
+import ProseLayout from "../../layouts/ProseLayout.astro";
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection("posts");
+---
+
+<ProseLayout title="Posts">
+    <ul>
+        {posts.map(post => (
+            <li><a href={`/posts/${post.id}`}>{post.data.title}</a></li>
+        ))}
+    </ul>
+</ProseLayout>
