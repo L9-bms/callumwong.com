@@ -1,6 +1,7 @@
 ---
 import { MusicBrainzApi } from "musicbrainz-api";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ProseLayout from "../layouts/ProseLayout.astro";
 
 const mbApi = new MusicBrainzApi({
   appName: "callumwong.com",
@@ -30,22 +31,21 @@ const recordings = import.meta.env.DEV
     );
 ---
 
-<BaseLayout title="Music">
-  <h2 class="text-center text-xl font-bold mb-2">My favourite music</h2>
+<ProseLayout title="Music">
   <p>Current 🥇:</p>
   <iframe
-    class="border-0 w-full h-full"
+    class="border-0 w-full h-full not-prose"
     src="https://bandcamp.com/EmbeddedPlayer/album=3765001844/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/track=3473717832/transparent=true/"
     seamless></iframe>
   <p>Previous:</p>
-  <ul class="list-disc list-inside">
+  <ul>
     {
       recordings.map((recording) => {
         return (
           <li>
-            {recording["artist-credit"][0].name} - {recording.title} (
+            {recording["artist-credit"]![0].name} - {recording.title} (
             {
-              recording.releases.sort((a, b) => (a.country == "JP" ? 1 : 0))[0]
+              recording.releases!.sort((a, b) => (a.country == "JP" ? 1 : 0))[0]
                 .title
             }
             )
@@ -54,7 +54,7 @@ const recordings = import.meta.env.DEV
       })
     }
   </ul>
-  <span class="inline-block mt-4 text-sm text-slate-400"
+  <span class="inline-block text-sm text-slate-400"
     >Powered by <a href="http://musicbrainz.org/">MusicBrainz</a></span
   >
-</BaseLayout>
+</ProseLayout>

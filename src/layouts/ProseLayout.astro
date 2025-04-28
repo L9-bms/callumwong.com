@@ -1,0 +1,19 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Prose from "../components/Prose.astro";
+
+type Props = {
+  title: string;
+};
+
+const { title } = Astro.props;
+---
+
+<BaseLayout title={title}>
+  <div class="max-w-lg">
+    <h2 class="text-center text-xl font-bold mb-2">{title}</h2>
+    <Prose>
+      <slot />
+    </Prose>
+  </div>
+</BaseLayout>
