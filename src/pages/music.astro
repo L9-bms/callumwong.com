@@ -20,6 +20,7 @@ const songs = [
   "ae0bb097-2c3c-48df-8989-cfda067dbf85",
   "ebbcf037-30c5-4ee1-833d-6ab4a6696c54",
   "f6a1a6e7-3b4c-4ce8-b9a3-55db3f109a6a",
+  "20033cb2-6de8-401c-a5f3-2b8f7d98028a",
 ];
 
 const recordings = import.meta.env.DEV
@@ -33,7 +34,7 @@ const recordings = import.meta.env.DEV
   <h2 class="text-center text-xl font-bold mb-2">My favourite music</h2>
   <p>Current 🥇:</p>
   <iframe
-    class="border-0 w-md h-full"
+    class="border-0 w-full h-full"
     src="https://bandcamp.com/EmbeddedPlayer/album=3765001844/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/track=3473717832/transparent=true/"
     seamless></iframe>
   <p>Previous:</p>
@@ -53,4 +54,7 @@ const recordings = import.meta.env.DEV
       })
     }
   </ul>
+  <span class="inline-block mt-4 text-sm text-slate-400"
+    >Powered by <a href="http://musicbrainz.org/">MusicBrainz</a></span
+  >
 </BaseLayout>

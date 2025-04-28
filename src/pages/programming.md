@@ -1,0 +1,12 @@
+---
+layout: ../layouts/Article.astro
+title: "Programming"
+---
+
+My dad inspired me to become a programmer. When I was little, I made the very first version of this website in his office at work with plain HTML and CSS. You would probably believe me if I said I didn't learn anything else after that, but despite the appearance of this website, I know modern JavaScript, like Astro, React and Vue for the front end and Node for the backend.
+
+I wanted to make shitty Minecraft mods, so I learnt some Java and made my first Forge mod (back when NeoForge wasn't a thing, or even Modrinth) without even having a Minecraft account. I eventually learnt Fabric as well as Bukkit/Spigot for server plugins, but I haven't made any notable projects with any.
+
+Knowing Java, I made a few things like REST APIs with Spring Boot and some desktop apps with Java Swing. I also learnt a bit of Kotlin for Android development.
+
+I'm now trying to develop closer to the hardware, learning Rust as a low-level language.

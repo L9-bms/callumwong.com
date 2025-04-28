@@ -1,15 +1,38 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Github from "simple-icons-astro/Github";
+import Anilist from "simple-icons-astro/Anilist";
+
+const links = [""];
 ---
 
 <BaseLayout>
-  <div class="flex flex-col text-center text-blue-600 underline">
-    <a href="/programming">Programming</a>
-    <a href="/electronics">Electronics</a>
-    <a href="/music">Music</a>
-    <a href="/stationery">Stationery</a>
-    <a href="/photography">Photography</a>
-    <a href="/rhythm-games">Rhythm Games</a>
-    <a href="/other-games">Other Games</a>
+  <div class="flex flex-col text-center items-center gap-y-4">
+    <p>I'm Callum Wong, a student in Sydney, Australia. 🇭🇰🇦🇺</p>
+    <p>
+      Projects:
+      <span
+        class="inline-flex flex-wrap gap-x-2 justify-center text-blue-600 underline"
+      >
+        <a href="https://github.com/65-7a/JishinTray">JishinTray</a>
+      </span>
+    </p>
+    <p>
+      Hobbies:
+      <span
+        class="inline-flex flex-wrap gap-x-2 justify-center text-blue-600 underline"
+      >
+        <a href="/programming">Programming</a>
+        <a href="/photography">Photography</a>
+        <a href="/stationery">Stationery</a>
+        <a href="/games">Games</a>
+        <a href="/music">Music</a>
+      </span>
+    </p>
+    <div class="flex flex-row gap-x-4 my-2">
+      <a href="https://github.com/65-7a"><Github /></a>
+      <a href="https://anilist.co/user/dondokodokodoko"><Anilist /></a>
+    </div>
+    <p>Thank you for visiting!</p>
   </div>
 </BaseLayout>

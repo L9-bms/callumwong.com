@@ -12,6 +12,7 @@
     "@tailwindcss/vite": "^4.1.4",
     "astro": "^5.7.4",
     "musicbrainz-api": "^0.25.0",
+    "simple-icons-astro": "^14.12.3",
     "tailwindcss": "^4.1.4"
   },
   "devDependencies": {
