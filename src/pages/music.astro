@@ -1,6 +1,5 @@
 ---
 import { MusicBrainzApi } from "musicbrainz-api";
-import BaseLayout from "../layouts/BaseLayout.astro";
 import ProseLayout from "../layouts/ProseLayout.astro";
 
 const mbApi = new MusicBrainzApi({
@@ -45,7 +44,7 @@ const recordings = import.meta.env.DEV
           <li>
             {recording["artist-credit"]![0].name} - {recording.title} (
             {
-              recording.releases!.sort((a, b) => (a.country == "JP" ? 1 : 0))[0]
+              recording.releases!.sort((a) => (a.country == "JP" ? 1 : 0))[0]
                 .title
             }
             )

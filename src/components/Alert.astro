@@ -1,3 +1,26 @@
-<div class="border border-blue-400 text-blue-600 px-4 py-3 rounded relative bg-blue-100">
+---
+type Status = "info" | "warning" | "error";
+
+interface Props {
+    status: Status
+}
+
+const { status = "info" } = Astro.props;
+let colorClass = "";
+switch (status) {
+    case "info":
+        colorClass = "border-blue-400 text-blue-600 bg-blue-100";
+        break;
+    case "warning":
+        colorClass = "border-yellow-400 text-yellow-600 bg-yellow-100";
+        break;
+    case "error":
+        colorClass = "border-red-400 text-red-600 bg-yellow-100";
+        break;
+}
+
+---
+
+<div class=`border px-4 py-3 rounded relative ${colorClass}`>
     <slot />
 </div>
