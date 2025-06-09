@@ -1,59 +1,34 @@
 ---
-import { MusicBrainzApi } from "musicbrainz-api";
 import ProseLayout from "../layouts/ProseLayout.astro";
-
-const mbApi = new MusicBrainzApi({
-  appName: "callumwong.com",
-  appVersion: "0.0.0",
-  appContactInfo: "https://callumwong.com",
-});
-
-const songs = [
-  "67899606-4857-485d-9fb0-9f1b7343d0c5",
-  "2a487bd6-f493-4dd7-aab3-725a6016375d",
-  "4ae1ae19-cd43-4def-875d-fb0d3513f415",
-  "4eb35773-e46d-4359-b3ea-c18cd35c6e79",
-  "3cfd1402-206a-4cf7-8f01-468963bbbe25",
-  "8d75e887-8a89-4957-af40-2ff62fe6c481",
-  "4c5e623a-a23d-4465-ab3a-c9b16d4f3d22",
-  "f7e5b746-e454-439f-8512-78c69527c752",
-  "ae0bb097-2c3c-48df-8989-cfda067dbf85",
-  "ebbcf037-30c5-4ee1-833d-6ab4a6696c54",
-  "f6a1a6e7-3b4c-4ce8-b9a3-55db3f109a6a",
-  "20033cb2-6de8-401c-a5f3-2b8f7d98028a",
-];
-
-const recordings = import.meta.env.DEV
-  ? []
-  : await Promise.all(
-      songs.map((id) => mbApi.lookup("recording", id, ["artists", "releases"]))
-    );
 ---
 
 <ProseLayout title="Music">
-  <p>Current 🥇:</p>
-  <iframe
-    class="border-0 w-full h-full not-prose"
-    src="https://bandcamp.com/EmbeddedPlayer/album=3765001844/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/track=3473717832/transparent=true/"
-    seamless></iframe>
-  <p>Previous:</p>
-  <ul>
-    {
-      recordings.map((recording) => {
-        return (
-          <li>
-            {recording["artist-credit"]![0].name} - {recording.title} (
-            {
-              recording.releases!.sort((a) => (a.country == "JP" ? 1 : 0))[0]
-                .title
-            }
-            )
-          </li>
-        );
-      })
-    }
-  </ul>
+  <div id="sotm" class="p-4">
+    <span>Song of the month:</span>
+    <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/238356221&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/xmittens" title="Mittensさん" target="_blank" style="color: #cccccc; text-decoration: none;">Mittensさん</a> · <a href="https://soundcloud.com/xmittens/winter-is-here" title="Winter Is Here" target="_blank" style="color: #cccccc; text-decoration: none;">Winter Is Here</a></div>
+  </div>
+  <a href="https://www.last.fm/user/a65_7a"><img src="https://lastfm-recently-played.vercel.app/api?user=a65_7a" height="auto" width="350px"/></a>
   <span class="inline-block text-sm text-slate-400"
     >Powered by <a href="http://musicbrainz.org/">MusicBrainz</a></span
   >
 </ProseLayout>
+<style>
+#sotm {
+  --angle: 0deg;
+  border: 2px solid;
+  border-image: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red) 1;
+  animation: 10s rotate linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+</style>

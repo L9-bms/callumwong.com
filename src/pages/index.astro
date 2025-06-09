@@ -2,35 +2,24 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Github from "simple-icons-astro/Github";
 import Anilist from "simple-icons-astro/Anilist";
+import Link from "../components/Link.astro";
 ---
 
 <BaseLayout>
   <div class="flex flex-col text-center items-center gap-y-4">
     <p>I'm Callum Wong, a student from Sydney, Australia. 🇭🇰🇦🇺</p>
     <p>
-      Check out my <a href="/posts" class="text-blue-600 underline">posts</a>
+      Check out my <Link href="/posts">posts</Link>, see some of my <Link href="https://gallery.callumwong.com">photos</Link>, or read more <Link href="/about">about me</Link>.
     </p>
-    <p><b>TODO:</b> Gallery, fix dead links</p>
     <p>
       Projects:
       <span
-        class="inline-flex flex-wrap gap-x-2 justify-center text-blue-600 underline"
+        class="inline-flex flex-wrap gap-x-2 justify-center"
       >
-        <a href="https://github.com/65-7a/JishinTray">JishinTray</a>
+        <Link href="https://github.com/65-7a/JishinTray">JishinTray</Link>
       </span>
     </p>
-    <p>
-      Hobbies:
-      <span
-        class="inline-flex flex-wrap gap-x-2 justify-center text-blue-600 underline"
-      >
-        <a href="/computers">Computers</a>
-        <a href="/photography">Photography</a>
-        <a href="/stationery">Stationery</a>
-        <a href="/games">Games</a>
-        <a href="/music">Music</a>
-      </span>
-    </p>
+    <p><Link href="/music">What I'm listening to</Link></p>
     <div class="flex flex-row gap-x-4 my-2">
       <a href="https://github.com/65-7a"><Github /></a>
       <a href="https://anilist.co/user/dondokodokodoko"><Anilist /></a>
