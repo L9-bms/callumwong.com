@@ -6,6 +6,8 @@ import rehypeFigureTitle from "rehype-figure-title";
 
 import mdx from "@astrojs/mdx";
 
+import vercel from "@astrojs/vercel";
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
@@ -16,5 +18,9 @@ export default defineConfig({
     rehypePlugins: [rehypeFigureTitle]
   },
 
-  integrations: [mdx()]
+  integrations: [mdx()],
+
+  adapter: vercel({
+    imageService: true,
+  }),
 });
