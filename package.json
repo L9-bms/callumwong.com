@@ -7,16 +7,16 @@
   },
   "license": "UNLICENSED",
   "private": "true",
-  "packageManager": "pnpm@10.9.0+sha512.0486e394640d3c1fb3c9d43d49cf92879ff74f8516959c235308f5a8f62e2e19528a65cdc2a3058f587cde71eba3d5b56327c8c33a97e4c4051ca48a10ca2d5f",
+  "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748",
   "dependencies": {
-    "@astrojs/mdx": "^4.3.1",
-    "@astrojs/vercel": "^8.2.3",
-    "@tailwindcss/vite": "^4.1.11",
-    "astro": "^5.12.3",
+    "@astrojs/mdx": "^4.3.4",
+    "@astrojs/vercel": "^8.2.6",
+    "@tailwindcss/vite": "^4.1.12",
+    "astro": "^5.13.2",
     "astro-embed": "^0.9.0",
     "rehype-figure-title": "^1.0.0",
-    "simple-icons-astro": "^15.8.0",
-    "tailwindcss": "^4.1.11"
+    "simple-icons-astro": "^15.11.0",
+    "tailwindcss": "^4.1.12"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16"
