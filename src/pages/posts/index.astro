@@ -7,7 +7,7 @@ const posts = await getCollection("posts");
 
 <ProseLayout title="Posts">
     <ul>
-        {posts.map(post => (
+        {posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).map(post => (
             <li><a href={`/posts/${post.id}`}>{post.data.title}</a></li>
         ))}
     </ul>
