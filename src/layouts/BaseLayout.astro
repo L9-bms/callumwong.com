@@ -14,7 +14,7 @@ const { title } = Astro.props;
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
-    <title>callumwong.com{title && ` – ${title}`}</title>
+    <title>{title ? `${title} - callumwong.com` : "callumwong.com"}</title>
   </head>
   <body
     class="min-h-screen flex flex-col justify-between bg-linear-to-b bg-fixed from-bg-light to-bg-dark"
