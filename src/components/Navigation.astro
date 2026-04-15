@@ -1,20 +1,21 @@
-<header class="text-center">
-  <div class="text-teal-windows py-4">
-    <p class="text-normal -mb-2">Welcome to</p>
-    <a href="/"><h1 class="text-4xl font-bold italic">callumwong.com</h1></a>
+<header class="flex flex-col items-center">
+  <div class="py-2 flex flex-col items-center">
+    <a href="/" class="pb-1 w-min font-bold text-4xl text-dark-violet"
+      >callumwong.com</a
+    >
+    <div class="flex flex-row flex-wrap gap-x-4 justify-center" id="links">
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="https://gallery.callumwong.com">Gallery</a>
+    </div>
   </div>
-  <hr class="text-gray-400" />
-  <div class="py-1 flex flex-row flex-wrap gap-x-4 justify-center" id="links">
-    <a href="https://gallery.callumwong.com" class="text-red-600">NEW: Photographs</a>
-    <a href="/posts">Posts</a>
-    <a href="/about">About me</a>
-    <a href="/contact">Contact</a>
-  </div>
-  <hr class="text-gray-400" />
+  <hr
+    class="w-full lg:w-1/2 border-0 h-px bg-linear-to-r from-transparent via-black to-transparent"
+  />
 </header>
 
 <style>
-  #links>a {
+  #links > a {
     @apply hover:underline;
   }
 </style>

@@ -1,0 +1,39 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  frontmatter: {
+    title: string;
+    date?: Date;
+    tags: string[];
+  };
+}
+
+const { frontmatter } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "2-digit",
+}).format(frontmatter.date);
+---
+
+<BaseLayout title={frontmatter.title}>
+  <div class="max-w-3xl">
+    <div class="my-8">
+      <div class="flex flex-row gap-x-4 text-gray-600 mb-2">
+        {
+          frontmatter.tags.map((tag) => (
+            <div class="bg-gray-300 px-3">{tag}</div>
+          ))
+        }
+        <span>{frontmatter.date && formattedDate}</span>
+      </div>
+      <h1 class="text-4xl font-black">{frontmatter.title}</h1>
+    </div>
+    <hr class="bg-gray-300 h-1 border-0" />
+    <article>
+      <slot />
+    </article>
+  </div>
+</BaseLayout>
