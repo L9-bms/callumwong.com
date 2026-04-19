@@ -1,14 +1,46 @@
 @import "tailwindcss";
-@plugin "@tailwindcss/typography";
 
 @theme {
-    --font-sans: "Arial", "sans-serif";
-    --color-teal-windows: #008080;
+    --default-font-family: "HarmonyOS Sans TC", sans-serif;
+
+    --color-bg-light: #E8E8E8;
+    --color-bg-dark: #D4D4D4;
+    --color-dark-violet: #1f1e33;
+    --color-yellow: #FFFA00;
+    --color-codebg: #fdfde799;
+    --color-inline-code: #e6e6e6da;
 }
 
-@utility container {
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 2rem;
-    padding-right: 2rem;
+:not(pre)>code {
+    @apply bg-inline-code p-1 rounded-sm;
+}
+
+blockquote,
+.markdown-alert {
+    @apply relative pl-4;
+    @apply before:bg-yellow before:absolute before:left-0 before:top-0 before:h-full before:w-1;
+}
+
+.markdown-alert-title {
+    @apply flex items-center gap-x-2 font-bold;
+}
+
+pre {
+    @apply relative my-6 rounded-sm border-0 !bg-codebg !overflow-visible;
+}
+
+pre::after {
+    @apply content-[""] absolute left-0 top-0 h-full w-1 bg-yellow;
+}
+
+pre[data-language]:not(pre[data-language="plaintext"]) {
+    @apply mt-10;
+}
+
+pre[data-language]:not(pre[data-language="plaintext"])::before {
+    @apply content-[attr(data-language)] absolute left-0 px-2 py-0.5 text-xs font-bold -top-5 bg-yellow uppercase;
+}
+
+pre code {
+    @apply py-4 px-5.5 block overflow-x-auto;
 }

@@ -1,0 +1,29 @@
+@reference "./global.css";
+
+article h2 {
+    @apply font-bold text-2xl my-5;
+}
+
+article h3 {
+    @apply font-bold text-xl my-6;
+}
+
+article h4 {
+    @apply font-bold text-lg my-7;
+}
+
+article p {
+    @apply my-5;
+}
+
+article a {
+    @apply relative underline text-blue-900;
+}
+
+article img {
+    @apply my-2;
+}
+
+article figcaption {
+    @apply text-sm text-gray-600 mb-6;
+}

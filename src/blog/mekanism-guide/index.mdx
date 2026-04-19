@@ -5,7 +5,6 @@ description: "Getting started in Mekanism V10, a Minecraft tech mod."
 tags: ["minecraft", "mod", "mekanism"]
 ---
 import { Image } from "astro:assets";
-import Alert from "../../components/Alert.astro";
 import tierInstaller from "./tier-installer.png";
 import energyCubeConfig from "./energy-cube-config.png";
 
@@ -53,9 +52,8 @@ Since this is your first Mekanism generator, the heat generator outputs a very s
 
 ![](heat-generator-gui.png "Heat generator screen")
 
-<Alert>
-**Tip:** Use [JEI](https://www.curseforge.com/minecraft/mc-mods/jei) (or alternatives) to explore recipes. By default, hovering over an item and pressing [R] will show you the crafting recipes for that item. Hovering and pressing [U] will show you which recipes that item is used in. You can also use the list on the right side of any screen and left/right click to perform these actions. You can even use the [+] button while browsing recipes to move the requried items to your crafting grid, if you have them.
-</Alert>
+> [!TIP]
+> Use [JEI](https://www.curseforge.com/minecraft/mc-mods/jei) (or alternatives) to explore recipes. By default, hovering over an item and pressing [R] will show you the crafting recipes for that item. Hovering and pressing [U] will show you which recipes that item is used in. You can also use the list on the right side of any screen and left/right click to perform these actions. You can even use the [+] button while browsing recipes to move the requried items to your crafting grid, if you have them.
 
 ### Steel Production
 
@@ -75,9 +73,8 @@ This is your first step in ore processing, obtaining better yield from raw ore. 
 
 The enrichment chamber can used to make enriched carbon/redstone for use in the metallurgic infuser, which is 8x more efficient than using plain (char)coal or redstone dust.
 
-<Alert>
-**Info:** You should use the enriched version of materials in the metallurgic infuser whenever possible. This is especially important in later progression, where elite alloys and circuits will be infused with diamonds and obsidian.
-</Alert>
+> [!TIP]
+> You should use the enriched version of materials in the metallurgic infuser whenever possible. This is especially important in later progression, where elite alloys and circuits will be infused with diamonds and obsidian.
 
 ### Cables
 
@@ -115,11 +112,9 @@ Now that you are generating a decent amount of energy, you should craft a basic 
 
 ![](energy-cubes.png "Energy cubes from left to right: Basic, Advanced, Elite, Ultimate.")
 
-<Alert>
-**Tip:** Configure your energy cube to input and output energy on all sides.
-
-<Image src={energyCubeConfig} alt="Energy cube configuration" />
-</Alert>
+> [!TIP]
+> Configure your energy cube to input and output energy on all sides.
+> <Image src={energyCubeConfig} alt="Energy cube configuration" />
 
 Once you start to generate massive amounts of energy, you can replace your energy cubes with an induction matrix. These multiblock structures consist of casings, induction ports to transfer power in and out of the matrix, induction cells to store power, and induction providers to increase the power transfer rate.
 
@@ -127,9 +122,8 @@ Once you start to generate massive amounts of energy, you can replace your energ
 
 All machines in Mekanism are based on infused alloy, which is made by infusing iron ingots with redstone in a metallurgic infuser, and steel casings. After crafting these, you can create machines such as the energized smelter, crusher, and more.
 
-<Alert>
-**Tip:** Most of Mekanism's blocks will store their contents, upgrades, and energy when broken.
-</Alert>
+> [!TIP]
+> Most of Mekanism's blocks will store their contents, upgrades, and energy when broken.
 
 ### Side Configuration
 
@@ -145,11 +139,9 @@ Most Mekanism machines can be turned into a factory, allowing multiple items to 
 
 ![](smelting-factory-gui.png "Tier 1 (Basic) smelting factory")
 
-<Alert>
-**Tip:** If you don't want to break your machines every time you upgrade them, use tier installers.
-
-<Image src={tierInstaller} alt="Elite Tier Installer Recipe" />
-</Alert>
+> [!TIP]
+> If you don't want to break your machines every time you upgrade them, use tier installers.
+> <Image src={tierInstaller} alt="Elite Tier Installer Recipe" />
 
 Upgrades can also be used on machines to improve them. Speed upgrades energy upgrades make them faster and more energy efficient, respectively. For both of these, 8 can be installed in each machine. Make sure that your setup has enough energy to power your upgraded machines, as the power usage for each operation increases with the number of speed upgrades.
 
