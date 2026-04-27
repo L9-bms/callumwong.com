@@ -18,6 +18,8 @@
     "astro-icon": "^1.1.5",
     "rehype-figure-title": "^1.1.0",
     "rehype-github-alert": "^1.0.0",
+    "sharp": "^0.34.5",
+    "sharp-ico": "^0.1.5",
     "tailwindcss": "^4.2.2",
     "typescript": "^6.0.2"
   }

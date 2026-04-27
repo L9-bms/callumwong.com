@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-    --default-font-family: "HarmonyOS Sans TC", sans-serif;
+    --font-sans: var(--font-harmonyos-sans);
 
     --color-bg-light: #E8E8E8;
     --color-bg-dark: #D4D4D4;
@@ -26,7 +26,7 @@ blockquote,
 }
 
 pre {
-    @apply relative my-6 rounded-sm border-0 !bg-codebg !overflow-visible;
+    @apply relative my-6 rounded-sm border-0 !bg-codebg !overflow-visible text-[14px] md:text-[15px];
 }
 
 pre::after {
