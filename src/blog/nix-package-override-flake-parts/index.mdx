@@ -1,0 +1,106 @@
+---
+title: "Writing Configurable Packages in Nix with flake-parts"
+date: 2026-04-27
+description: "How to package software in a Nix flake, and configure it at build time from a NixOS configuration using override"
+tags: ["tutorial", "nix"]
+---
+
+As a Nix beginner, I had trouble figuring out how to make a Nix package configurable from a NixOS configuration.
+In my case, I needed to feed in a list of services to my dashboard, which was a static site built with Astro.
+
+Here's how I did it using conventions that already existed in `nixpkgs`.
+
+## Put your packaging where it belongs
+
+[jade's post on Nix flakes](https://jade.fyi/blog/flakes-arent-real#flakes-are-where-you-put-your-nix-code)
+describes how to separate your Nix logic from `flake.nix`, which mirrors how `nixpkgs` defines packages without flakes.
+By moving the code to `package.nix` and using `callPackage`, you can trivially override parameters from outside the
+package definition, among other advantages.
+
+> [!NOTE]
+> [nix.dev](https://nix.dev/tutorials/callpackage.html#parameterised-builds) also has a tutorial on this subject.
+
+Write your package as a function with overridable arguments:
+
+```nix
+# package.nix
+
+{
+  lib,
+  stdenv,
+  # ...
+  name ? "callum",
+  languages ? [ "english" "nix" ],
+}:
+stdenv.mkDerivation {
+  pname = "my-configurable-package";
+  version = "1.0.0";
+  src = ./.;
+
+  # you can set environment variables...
+  env = {
+    NAME = lib.escapeShellArg name;
+  };
+
+  # ...or write to a file...
+  preBuild = ''
+    echo '${builtins.toJSON languages}' > languages.json
+  '';
+
+  # ...or pass into a script, etc.
+  buildPhase = ''
+    runHook preBuild
+    ./build --name ${lib.escapeShellArg name}
+    runHook postBuild
+  '';
+}
+```
+
+## Expose it in your outputs, with a side of overlay
+
+`nixpkgs` has been using `callPackage` [since 2010](https://github.com/nixos/nixpkgs/commit/d17f0f9cbca38fabb71624f069cd4c0d6feace92).
+It automatically fills the required dependencies from `pkgs`, and also applies `lib.makeOverridable` automatically,
+allowing you to override our custom arguments in our configuration.
+
+You can access the package directly from the flake input after defining it,
+but I prefer defining a `nixpkgs` overlay for convenience.
+
+With flake-parts, you can use [`easyOverlay`](https://flake.parts/overlays#an-overlay-for-free-with-flake-parts).
+It lets you export an overlay from the same `perSystem` config where you defined the package.
+
+```nix
+{
+  inputs.flake-parts.url = "github:hercules-ci/flake-parts";
+
+  outputs = { flake-parts, ... }@inputs:
+  flake-parts.lib.mkFlake { inherit inputs; } {
+    imports = [ inputs.flake-parts.flakeModules.easyOverlay ];
+
+    perSystem = { pkgs, config, ... }: {
+      packages.my-configurable-package = pkgs.callPackage ./package.nix { };
+
+      overlayAttrs = {
+        inherit (config.packages) my-configurable-package;
+      };
+    };
+  };
+}
+```
+
+## Use it
+
+Now it's easy to pass in whatever you need to your package at build time.
+
+```nix
+{
+  nixpkgs.overlays = [ inputs.my-flake.overlays.default ];
+
+  environment.systemPackages = [
+    (pkgs.my-configurable-package.override {
+      name = "ichihime";
+      languages = [ "pon" "nyaa" ];
+    })
+  ];
+}
+```
+
